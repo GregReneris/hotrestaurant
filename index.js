@@ -10,6 +10,10 @@ app.get('/',(req,res) =>{
     res.send("HOME PAGE");
 })
 
+const name = "Rob"
+const phonenumber = "123-456-7890";
+const email = "Joeisjoe@dennis.com";
+const uniqueId ="Test ID";
 
 app.get('/reservation', (req,res)=>{
     res.json({
@@ -31,6 +35,7 @@ app.get('/waitlist', (req,res)=>{
 
 
 app.listen(PORT,function(){
-    console.log("spun up server" + PORT);
+    console.log("spun up server " + PORT);
 })
+
 
