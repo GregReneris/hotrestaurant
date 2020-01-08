@@ -34,20 +34,16 @@ app.get('/waitlistArray', (req,res)=>{
 })
 
 
-
-
-
-
-
-
-
-
 app.get("/form", function(req, res) {
     // res.send("Welcome to the form page!")
     res.sendFile(path.join(__dirname, "form.html"));
   });
 
 
+app.get("/tables", function(req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"));
+  });
+  
 app.listen(PORT,function(){
     console.log("spun up server " + PORT);
 })
