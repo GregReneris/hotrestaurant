@@ -16,6 +16,48 @@ const phonenumber = "123-456-7890";
 const email = "Joeisjoe@dennis.com";
 const uniqueId ="Test ID";
 
+            // character will no work, need something else.
+app.post("tables", function(req, res) {
+    // req.body hosts is equal to the JSON post sent from the user
+    // This works because of our body parsing middleware
+    
+    var newtable = req.body;
+    console.log(newtable);
+
+    // We then add the json the user sent to the character array
+    characters.push(newtable);
+  
+    // We then display the JSON to the users
+    res.json(newtable);
+  });
+  
+  
+
+
+let tables = [
+    
+    {
+        name : name,
+        phonenumber : phonenumber,
+        email : email,
+        uniqueId : uniqueId,
+    }
+
+];
+
+let waitlist = [
+    
+    {
+        name : name,
+        phonenumber : phonenumber,
+        email : email,
+        uniqueId : uniqueId,
+    }
+
+];
+
+
+
 app.get('/reservationArray', (req,res)=>{
     res.json({
         name: name,
