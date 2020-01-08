@@ -4,6 +4,10 @@ var path = require('path');
 
 var app = express();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
 // this is heroku process.env.PORT or if running local will be on port 3000.
 const PORT = process.env.PORT || 3000;
 
@@ -11,10 +15,36 @@ app.get('/',(req,res) =>{
     res.sendFile(path.join(__dirname, "./index.html"));
 })
 
-const name = "Rob"
-const phonenumber = "123-456-7890";
-const email = "Joeisjoe@dennis.com";
-const uniqueId ="Test ID";
+const waitList = [
+ {name: "Rob",
+ phonenumber: "123-456-7890",
+ email: "Joeisjoe@dennis.com",
+ uniqueId: "Test ID"}
+];
+
+const reservationList = [
+    {name: "Lob",
+    phonenumber: "123-456-7890",
+    email: "Joeisjoe@dennis.com",
+    uniqueId: "Test ID"}
+   ];
+
+
+            // character will no work, need something else.
+app.post("tables", function(req, res) {
+    // req.body hosts is equal to the JSON post sent from the user
+    // This works because of our body parsing middleware
+    
+    var newtable = req.body;
+    console.log(newtable);
+
+    // We then add the json the user sent to the character array
+    characters.push(newtable);
+  
+    // We then display the JSON to the users
+    res.json(newtable);
+  });
+  
 
 app.get('/reservationArray', (req,res)=>{
     res.json({
@@ -44,6 +74,34 @@ app.get("/form", function(req, res) {
 app.get("/tables", function(req, res) {
     res.sendFile(path.join(__dirname, "tables.html"));
   });
+  
+
+app.post("/waitlistArray", function(req, res) {
+var newWaitList = req.body;
+
+console.log(newWaitList);
+
+waitList.push(newWaitList);
+
+// We then display the JSON to the users
+res.json(newWaitList);
+console.log(waitList);
+
+});
+
+app.post("/reservationArray", function(req, res) {
+    var newreservationList = req.body;
+    
+    console.log(newreservationList);
+    
+    reservationList.push(newreservationList);
+    
+    // We then display the JSON to the users
+    res.json(newreservationList);
+    console.log(newreservationList);
+    
+    });
+
   
 app.listen(PORT,function(){
     console.log("spun up server " + PORT);
