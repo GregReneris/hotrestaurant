@@ -11,7 +11,16 @@ app.get('/',(req,res) =>{
 })
 
 
-app.get('/reservations', (req,res)=>{
+app.get('/reservation', (req,res)=>{
+    res.json({
+        name: name,
+        phonenumber: phonenumber,
+        email: email,
+        uniqueId: uniqueId,
+    })
+})
+
+app.get('/waitlist', (req,res)=>{
     res.json({
         name: name,
         phonenumber: phonenumber,
