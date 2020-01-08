@@ -22,6 +22,14 @@ const waitList = [
  uniqueId: "Test ID"}
 ];
 
+const reservationList = [
+    {name: "Lob",
+    phonenumber: "123-456-7890",
+    email: "Joeisjoe@dennis.com",
+    uniqueId: "Test ID"}
+   ];
+
+
             // character will no work, need something else.
 app.post("tables", function(req, res) {
     // req.body hosts is equal to the JSON post sent from the user
@@ -37,32 +45,6 @@ app.post("tables", function(req, res) {
     res.json(newtable);
   });
   
-  
-
-
-let tables = [
-    
-    {
-        name : name,
-        phonenumber : phonenumber,
-        email : email,
-        uniqueId : uniqueId,
-    }
-
-];
-
-let waitlist = [
-    
-    {
-        name : name,
-        phonenumber : phonenumber,
-        email : email,
-        uniqueId : uniqueId,
-    }
-
-];
-
-
 
 app.get('/reservationArray', (req,res)=>{
     res.json({
@@ -106,7 +88,20 @@ res.json(newWaitList);
 console.log(waitList);
 
 });
-  
+
+app.post("/reservationArray", function(req, res) {
+    var newreservationList = req.body;
+    
+    console.log(newreservationList);
+    
+    reservationList.push(newreservationList);
+    
+    // We then display the JSON to the users
+    res.json(newreservationList);
+    console.log(newreservationList);
+    
+    });
+
   
 app.listen(PORT,function(){
     console.log("spun up server " + PORT);
